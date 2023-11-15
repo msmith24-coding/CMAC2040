@@ -14,7 +14,6 @@ CXXFLAGS = $(DEBUG_FLAGS) $(OPTIMIZATION_FLAGS) $(STANDARD) $(WARNING_FLAGS)
 # Directorys are defined here.
 INCLUDE_DIR = ./include
 SOURCE_DIR = ./src
-TEST_DIR = ./tests
 OBJ_DIR = ./obj
 
 SOURCES = $(SOURCE_DIR)/AbilityT.cpp
@@ -30,11 +29,9 @@ OBJS = $(SOURCES:$(SOURCE_DIR)/%.cpp=$(OBJ_DIR)/%.o)
 ifeq ($(OS),Windows_NT)
     RM_CMD = del /Q /F
     OUT = $(PROJECT_NAME).exe
-    TESTS = player_test.exe
 else
     RM_CMD = rm -rf
     OUT = $(PROJECT_NAME)
-    TESTS = player_test
     TAR_CMD = tar -czvf ../$(PROJECT_NAME).tar.gz ../$(PROJECT_NAME)
 endif
 
@@ -42,9 +39,6 @@ endif
 .PHONY: all clean
 
 all: $(OUT)
-
-tests: $(TESTS)
-	$(CC) $(CXXFLAGS) $(TESTS) -o $@
 
 $(OUT): $(OBJS)
 	$(CC) $(CXXFLAGS) $(OBJS) -o $@
