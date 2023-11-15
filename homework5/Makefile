@@ -36,7 +36,7 @@ else
 endif
 
 # Actions
-.PHONY: all clean
+.PHONY: all clean tar
 
 all: $(OUT)
 
