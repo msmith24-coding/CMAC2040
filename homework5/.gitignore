@@ -1,0 +1,7 @@
+# Build-specific ignores
+obj/
+*.o
+
+# Executables
+homework5
+*.exe
