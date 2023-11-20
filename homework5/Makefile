@@ -56,4 +56,5 @@ clean:
 	$(RM_CMD) $(OBJ_DIR) $(OUT)
 
 tar:
+	make clean
 	$(TAR) 
