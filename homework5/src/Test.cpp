@@ -1,10 +1,15 @@
 #include <iostream>
 #include "NonPlayerT.h"
+#include "PlayerT.h"
+#include "EncounterT.h"
 
+void MakePlayer(PlayerT & player);
 void TellAboutNPC(NonPlayerT & p);
 
 int main()
 {
+    srand(time(nullptr));
+    
     NonPlayerT npc0;
     npc0.SetName("Npc0");
     npc0.setJob(JobT::MERCHANT);
@@ -25,6 +30,10 @@ int main()
     PlayerT player;
     MakePlayer(player);
 
+    ChallengeEncounterT encounter0("jump across columns to get past a pit fall", "you jumped across the pit fall", "you fell in the pit.", AbilityT::AGILE, 3);    
+
+    encounter0.DoEncounter(player);
+
     return 0;
 }
 
@@ -34,7 +43,8 @@ void MakePlayer(PlayerT & player){
     player.SetName("Giga Monty");
     player.AddAbility(AbilityT::STRONG);
     player.AddAbility(AbilityT::STRONG);
-    player.AddAbility(AbilityT::STRONG);
+    player.AddAbility(AbilityT::AGILE);
+    player.AddAbility(AbilityT::AGILE);
     player.AddAbility(AbilityT::WEAK);
     player.AddAbility(AbilityT::UGLY);
 
@@ -44,7 +54,7 @@ void MakePlayer(PlayerT & player){
     player.AddItem(item);
 
     item.SetName("Holy Hand Grenade");
-    item.SetDescription("And the Lord spake, saying, ''First shalt thou take out the Holy Pin. Then shalt thou count to three, no more, no less. Three shall be the number thou shalt count, and the number of the counting shall be three. Four shalt thou not count, neither count thou two, excepting that thou then proceed to three. Five is right out. Once the number three, being the third number, be reached, then lobbest thou thy Holy Hand Grenade of Antioch towards thy foe, who, being naughty in My sight, shall snuff it.'");
+    item.SetDescription("And the Lord spake, saying, \n''First shalt thou take out the Holy Pin.\n Then shalt thou count to three, no more, no less. \nThree shall be the number thou shalt count, and the number of the counting shall be three. \nFour shalt thou not count, neither count thou two, excepting that thou then proceed to three. \nFive is right out. Once the number three, being the third number, \nbe reached, then lobbest thou thy Holy Hand Grenade of Antioch towards thy foe, who, \nbeing naughty in My sight, shall snuff it.'");
     item.SetAbility(AbilityT::STRONG);
     player.AddItem(item);
 
@@ -52,8 +62,6 @@ void MakePlayer(PlayerT & player){
     item.SetDescription("A fridge full of frog corpses");
     item.SetAbility(AbilityT::NONE);
     player.AddItem(item);
-
-
 }
 
 void TellAboutNPC(NonPlayerT & p){
