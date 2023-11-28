@@ -14,5 +14,5 @@ bool NonEncounterT::DoEncounter(PlayerT & player) {
      player.ChangeGold(1);
      cout << endl;
 
-     return true ;
+     return true;
 }

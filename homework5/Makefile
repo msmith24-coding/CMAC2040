@@ -16,11 +16,14 @@ INCLUDE_DIR = ./include
 SOURCE_DIR = ./src
 OBJ_DIR = ./obj
 
-SOURCES = $(SOURCE_DIR)/AbilityT.cpp
+#SOURCES = $(SOURCE_DIR)/Game.cpp
+SOURCES += $(SOURCE_DIR)/AbilityT.cpp
 SOURCES += $(SOURCE_DIR)/EncounterT.cpp
-SOURCES += $(SOURCE_DIR)/Game.cpp
+SOURCES += $(SOURCE_DIR)/ChallengeEncounterT.cpp
+SOURCES += $(SOURCE_DIR)/NonPlayerT.cpp
 SOURCES += $(SOURCE_DIR)/ItemT.cpp
 SOURCES += $(SOURCE_DIR)/PlayerT.cpp
+SOURCES += $(SOURCE_DIR)/Test.cpp
 SOURCES += $(SOURCE_DIR)/RoomT.cpp
 
 OBJS = $(SOURCES:$(SOURCE_DIR)/%.cpp=$(OBJ_DIR)/%.o)
@@ -51,6 +54,9 @@ $(OBJ_DIR)/%.o: $(SOURCE_DIR)/%.cpp
 # Makes the objs folder.
 $(OBJ_DIR):
 	mkdir -p $(OBJ_DIR)
+
+test:
+	
 
 clean:
 	$(RM_CMD) $(OBJ_DIR) $(OUT)

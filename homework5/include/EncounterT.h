@@ -30,7 +30,6 @@ class NonEncounterT : public EncounterT {
         bool DoEncounter(PlayerT & player) override;
 };
 
-/*
 class ChallengeEncounterT : public EncounterT {
      public:
         ChallengeEncounterT() = default;
@@ -52,8 +51,8 @@ class ChallengeEncounterT : public EncounterT {
         virtual int CountDie(const PlayerT & player);
         virtual int Roll();
      private:
+        unsigned int dieCount = 2;
         std::string challenge, success, fail;
         AbilityT ability;
         int difficulty;
 };
-*/
