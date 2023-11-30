@@ -56,3 +56,32 @@ class ChallengeEncounterT : public EncounterT {
         AbilityT ability;
         int difficulty;
 };
+
+class RewardEncounterT : public ChallengeEncounterT
+{
+   public:
+      RewardEncounterT() = default;
+      RewardEncounterT(RewardEncounterT &) = default;
+      RewardEncounterT(RewardEncounterT &&) = delete;
+
+      RewardEncounterT(std::string newChallenge,
+                        std::string newSuccess,
+                        std::string newFail,
+                        AbilityT newAbility,
+                        int newDifficulty,
+                        int newGoldReward);
+      
+      RewardEncounterT(std::string newChallenge,
+                        std::string newSuccess,
+                        std::string newFail,
+                        AbilityT newAbility,
+                        int newDifficulty,
+                        ItemT newItemReward);
+      
+      virtual ~RewardEncounterT() = default;
+
+      bool DoEncounter(PlayerT & player) override;
+   private:
+      int rewardGold;
+      ItemT rewardItem;
+};

@@ -30,7 +30,12 @@ int main()
     PlayerT player;
     MakePlayer(player);
 
-    ChallengeEncounterT encounter0("jump across columns to get past a pit fall", "you jumped across the pit fall", "you fell in the pit.", AbilityT::AGILE, 3);    
+    ItemT item;
+    item.SetName("Holy Hand Grenade");
+    item.SetDescription("And the Lord spake, saying, \n''First shalt thou take out the Holy Pin.\n Then shalt thou count to three, no more, no less. \nThree shall be the number thou shalt count, and the number of the counting shall be three. \nFour shalt thou not count, neither count thou two, excepting that thou then proceed to three. \nFive is right out. Once the number three, being the third number, \nbe reached, then lobbest thou thy Holy Hand Grenade of Antioch towards thy foe, who, \nbeing naughty in My sight, shall snuff it.'");
+    item.SetAbility(AbilityT::STRONG);
+
+    RewardEncounterT encounter0("jump across columns to get past a pit fall", "you jumped across the pit fall", "you fell in the pit.", AbilityT::AGILE, 3, item);    
 
     encounter0.DoEncounter(player);
 
@@ -50,11 +55,6 @@ void MakePlayer(PlayerT & player){
 
     item.SetName("Excalibur");
     item.SetDescription("The Lady of the Lake, her arm clad in the purest shimmering samite held aloft Excalibur from the bosom of the water, signifying by divine providence that I, Arthur, was to carry Excalibur. THAT is why I am your king.");
-    item.SetAbility(AbilityT::STRONG);
-    player.AddItem(item);
-
-    item.SetName("Holy Hand Grenade");
-    item.SetDescription("And the Lord spake, saying, \n''First shalt thou take out the Holy Pin.\n Then shalt thou count to three, no more, no less. \nThree shall be the number thou shalt count, and the number of the counting shall be three. \nFour shalt thou not count, neither count thou two, excepting that thou then proceed to three. \nFive is right out. Once the number three, being the third number, \nbe reached, then lobbest thou thy Holy Hand Grenade of Antioch towards thy foe, who, \nbeing naughty in My sight, shall snuff it.'");
     item.SetAbility(AbilityT::STRONG);
     player.AddItem(item);
 

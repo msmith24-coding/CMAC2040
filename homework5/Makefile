@@ -16,14 +16,15 @@ INCLUDE_DIR = ./include
 SOURCE_DIR = ./src
 OBJ_DIR = ./obj
 
-#SOURCES = $(SOURCE_DIR)/Game.cpp
+SOURCES = $(SOURCE_DIR)/Game.cpp
+#SOURCES += $(SOURCE_DIR)/Test.cpp
 SOURCES += $(SOURCE_DIR)/AbilityT.cpp
 SOURCES += $(SOURCE_DIR)/EncounterT.cpp
 SOURCES += $(SOURCE_DIR)/ChallengeEncounterT.cpp
+SOURCES += $(SOURCE_DIR)/RewardEncounterT.cpp
 SOURCES += $(SOURCE_DIR)/NonPlayerT.cpp
 SOURCES += $(SOURCE_DIR)/ItemT.cpp
 SOURCES += $(SOURCE_DIR)/PlayerT.cpp
-SOURCES += $(SOURCE_DIR)/Test.cpp
 SOURCES += $(SOURCE_DIR)/RoomT.cpp
 
 OBJS = $(SOURCES:$(SOURCE_DIR)/%.cpp=$(OBJ_DIR)/%.o)
