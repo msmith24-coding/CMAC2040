@@ -27,7 +27,7 @@ bool RewardEncounterT::DoEncounter(PlayerT & player)
     bool result = ChallengeEncounterT::DoEncounter(player);
 
     if(result) {
-        if(this->rewardGold != 0) {
+        if(this->rewardGold > 0) {
             std::cout << "You found " << this->rewardGold << " gold!" << std::endl;
             player.ChangeGold(this->rewardGold);
         } else {
@@ -39,4 +39,12 @@ bool RewardEncounterT::DoEncounter(PlayerT & player)
     }
     return false;
 
+}
+
+RewardEncounterT * RewardEncounterT::Clone() 
+{
+    if(this->rewardGold > 0) {
+        return new RewardEncounterT(this->challenge, this->success, this->fail, this->ability, this->difficulty, this->rewardGold);
+    }
+    return new RewardEncounterT(this->challenge, this->success, this->fail, this->ability, this->difficulty, this->rewardItem);
 }

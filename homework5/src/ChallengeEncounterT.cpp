@@ -21,17 +21,17 @@ int ChallengeEncounterT::CountDie(const PlayerT & player)
 
     unsigned int validAbilityCount = 0;
     unsigned int index = 0;
-    while(index < player.GetAbilities().size() || validAbilityCount < 2) {
-        if(player.GetAbilities().at(index) == this->ability) {
+    while(index < player.GetAbilities().size()) {
+        if(player.GetAbilities().at(index) == this->ability || validAbilityCount < 2) {
             validAbilityCount++;
             this->dieCount++;
             std::cout << "\tYou are " << this->ability << " so that adds 1 for " << this->dieCount << std::endl;
         }
-        index++;
+        ++index;
         // std::cout << (index < player.GetAbilities().size() || validAbilityCount <= 2) << std::endl;
     }
+
     for(auto item : player.GetItems()) {
-       
         if(item.GetAbility() == this->ability) {
             this->dieCount++;
             std::cout << "\tYour " << item.GetName() << " adds 1 for " << this->dieCount << std::endl;
@@ -85,7 +85,7 @@ bool ChallengeEncounterT::DoEncounter(PlayerT & player)
         return true;
     } else {
         std::cout << "\tThis is a failure: " << this->fail << std::endl;
+        dieCount = 2;
         return false;
     }
-
 }

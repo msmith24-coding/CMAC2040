@@ -50,7 +50,7 @@ class ChallengeEncounterT : public EncounterT {
      protected: 
         virtual int CountDie(const PlayerT & player);
         virtual int Roll();
-     private:
+     protected:
         unsigned int dieCount = 2;
         std::string challenge, success, fail;
         AbilityT ability;
@@ -79,6 +79,7 @@ class RewardEncounterT : public ChallengeEncounterT
                         ItemT newItemReward);
       
       virtual ~RewardEncounterT() = default;
+      RewardEncounterT * Clone() override;
 
       bool DoEncounter(PlayerT & player) override;
    private:

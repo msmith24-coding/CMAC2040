@@ -117,9 +117,7 @@ void MakePlayer(PlayerT & player){
     player.SetName("Bob");
     player.AddAbility(AbilityT::STRONG);
     player.AddAbility(AbilityT::STRONG);
-    player.AddAbility(AbilityT::STRONG);
     player.AddAbility(AbilityT::WEAK);
-    player.AddAbility(AbilityT::UGLY);
     player.AddAbility(AbilityT::CLEVER);
 
     item.SetName("Sword");
@@ -150,30 +148,85 @@ void MakeGame(BoardT & board){
     board.push_back(room1);
 
     // make the second room
-    RoomT room2;
-    e1 = new NonEncounterT;
-    room2.AddEncounter("Exit", e1);
-    e2 = new NonEncounterT;
-    room2.AddEncounter("Sleep", e2);
-    e3 = new NonEncounterT;
-    room2.AddEncounter("Search", e3);
-    board.push_back(room2);
+    // RoomT room2;
+    // e1 = new NonEncounterT;
+    // room2.AddEncounter("Exit", e1);
+    // e2 = new NonEncounterT;
+    // room2.AddEncounter("Sleep", e2);
+    // e3 = new NonEncounterT;
+    // room2.AddEncounter("Search", e3);
+    // board.push_back(room2);
 
-/*
-    RoomT room2a;
+    RoomT room2;
     ChallengeEncounterT * c1 = new 
            ChallengeEncounterT("jump a deep ditch.", 
                                "you sail over the ditch.",
                                "you fall in the ditch.", AbilityT::STRONG, 3);
-    room2a.AddEncounter("Exit",c1);
-    board.push_back(room2a);
-*/
+    room2.AddEncounter("Exit",c1);
+    board.push_back(room2);
+
 
     // make the third room
     RoomT room3;
-    e1 = new NonEncounterT;
-    room3.AddEncounter("Sleep", e1);
+    ChallengeEncounterT * c2 = new 
+           ChallengeEncounterT("pick a door lock.", 
+                               "you opened the door.",
+                               "you can't open the door.", AbilityT::CLEVER, 2);
+    room3.AddEncounter("Exit",c2);
     board.push_back(room3);
+
+    RoomT room4;
+    ChallengeEncounterT * c3 = new 
+           ChallengeEncounterT("beat a gambler in a dice roll.", 
+                               "you leave watching the gambler down a bottle of rum.",
+                               "the gambler punches you back to the previous room.", AbilityT::DEXTEROUS, 1);
+    room4.AddEncounter("Exit",c3);
+    board.push_back(room4);
+
+    // Reward shit
+
+    RoomT room5;
+    RewardEncounterT * r1 = new 
+           RewardEncounterT("you have to slay Barney the purple dinosaur.", 
+                               "you behead Barney finding 10 gold coins on his body.",
+                               "the Barney theme song plays leaving you dancing out of the room.", AbilityT::TOUGH, 3, 10);
+    room5.AddEncounter("Exit",r1);
+    board.push_back(room5);
+
+    ItemT cheeseItem;
+    cheeseItem.SetName("Cheese of Truth");
+    cheeseItem.SetDescription("This cheese contains the souls of the innocence. More voices were added to your head.");
+    cheeseItem.SetAbility(AbilityT::WISE);
+
+
+    RoomT room6;
+    RewardEncounterT * r2 = new 
+           RewardEncounterT("you must open a locked chest.", 
+                               "you find the legndary Cheese of Truth.",
+                               "you failed to unlock the chest. The dungeon now mocks you.", AbilityT::WISE, 2, cheeseItem);
+    room6.AddEncounter("Exit", r2);
+    board.push_back(room6);
+
+    ItemT truffulaItem;
+    truffulaItem.SetName("Full Grown Truffula Tree");
+    truffulaItem.SetDescription("Forced to carry this tree where ever you go.");
+    truffulaItem.SetAbility(AbilityT::SLOW);
+
+    RoomT room7;
+    RewardEncounterT * r3 = new 
+           RewardEncounterT("you have to spot the Lorax in the trees.", 
+                               "you find the Lorax and he gives you 3 gold and states \"I am the Lorax and I speak for the trees, and for some reason they are speaking Vietnamese.\".",
+                               "you failed to find the Lorax, but instead you get pumbled by Vietcong snipers.", AbilityT::FAST, 3, truffulaItem);
+    room7.AddEncounter("Exit",r3);
+    board.push_back(room7);
+
+    RoomT room8;
+    RewardEncounterT * r4 = new 
+           RewardEncounterT("grab gold coins hanging from the ceiling.", 
+                               "you grab 3 gold pieces.",
+                               "you fail to grab any gold.", AbilityT::AGILE, 2, 3);
+    room8.AddEncounter("Exit", r4);
+    board.push_back(room8);
 
     return;
 }
